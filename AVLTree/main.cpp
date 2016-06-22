@@ -24,7 +24,6 @@ int main(int argc, char const *argv[])
 	}catch(const char *e){
 		cout<<e;
 	}
-	
 
 	return 0;
 }
