@@ -1,16 +1,22 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <cassert>
 using namespace std;
 
-int main(int argc, char const *argv[])
+vector<int> m;
+vector<int> x;
+int main()
 {
 	int n = 0;
 	int temp = 0;
 	cin >> n;
 	// vector< vector<int> > v(n+1, vector<int>());
-	vector<int> m(n+1, 200001);
-	vector<int> x(n+1, 0);
+
+    m.assign(n + 1, 200001);
+    x.assign(n + 1, 0);
+	//vector<int> m(n+1, 200001);
+	//vector<int> x(n+1, 0);
 	for(int i=1; i<=n; ++i){
 		cin >> temp;
 		// v[temp].push_back(i);
@@ -21,13 +27,13 @@ int main(int argc, char const *argv[])
 	// 	for(auto &j : v[i]) cout << j << " ";
 	// 	cout << endl;
 	// }
-	
+
 	// m[1] = 0;	cout << "0 ";
 	// temp = 0;
 	// for(int i=2; i<=n; ++i){
 	// 	temp = m[i-1] + 1;
 	// 	for(auto &j : v[i]){
-	// 		// cout << " testing " << m[j]+1; 
+	// 		// cout << " testing " << m[j]+1;
 	// 		if(j!=i && temp > m[j]+1) temp = m[j]+1;
 	// 	}
 	// 	m[i] = temp;
@@ -39,10 +45,14 @@ int main(int argc, char const *argv[])
 	m[1] = 0;
 	while(q.size()!=0){
 		int temp = q.front();
+        // printf("in queue %d \n", temp);
+        // assert(temp > 1);
+        // assert(temp <= n);
+        // assert(temp > 1 and temp <= n);
 		q.pop();
 		// cout << temp << " with val " << m[temp] << endl;
 		if(m[temp-1] > m[temp]+1)
-		{ 
+		{
 			m[temp-1] = m[temp]+1;
 			q.push(temp-1);
 		}

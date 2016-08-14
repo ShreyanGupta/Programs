@@ -1,4 +1,4 @@
- #ifndef HEAP_HPP
+#ifndef HEAP_HPP
 #define HEAP_HPP
 
 #include <iostream>
