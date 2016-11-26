@@ -111,11 +111,12 @@ bool test_mergesort(){
 	cout << "testing merge_sort" << endl;
 	LinkedList l;
 	// if(merge_sort(l).size() != 0) return false;
-	for(int i=0; i<100; i+=2) l.insert(i);
-	for(int i=1; i<100; i+=2) l.insert(i);
+	for(int i=0; i<2; i+=2) l.insert(i);
+	for(int i=1; i<2; i+=2) l.insert(i);
 	cout << "inserted elements" << endl;
+	for(int i=0; i<2; ++i) cout << l.element_at_pos(i) << " "; cout << endl;
 	LinkedList sorted = merge_sort(l);
-	for(int i=0; i<100; ++i) if(sorted.element_at_pos(i) != i) return false;
+	for(int i=0; i<2; ++i) if(sorted.element_at_pos(i) != i) return false;
 	return true;
 }
 

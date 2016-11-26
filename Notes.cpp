@@ -6,20 +6,30 @@ int *a = new int[n];
 // random number generator
 int random_num = rand()%n;
 
+memset(A, 0, sizeof(A));
+memcpy(destination, source, count);
+
+str.find("string to find",i); (searhc from i to n);
+returns str::npos;
+str.substr(start, stop);
+
 #include <algorithm>
 auto ptr = std::find(v.begin(), v.end(), val);	// returns iterator to element else v.end()
 std::sort(v.begin(), v.end(), function)	;		// sorts using function comparator
 std::reverse(v.begin(), v.end());				// reverses
 auto ptr = std::lower_bound(v.begin(), v.end(), val, func);// 1st element just greater than val (including val)
 bool find = std::binary_search(v.begin(), v.end(), val, func);
+std::min(int a, int b);
+std::max(int a, int b);
 
 std::pair<int, int> p = make_pair(a,b);
 
 #include <queue>
 q.empty();
 q.size();
-q.front();
-q.back();
+int a = q.front();
+int a = q.back();
+q.push(a);
 q.pop();
 
 std::priority_queue<int> p;

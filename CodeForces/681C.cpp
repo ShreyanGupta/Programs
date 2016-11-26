@@ -17,9 +17,10 @@ int main(int argc, char const *argv[])
 	string cmd;
 	ll val;
 	int n;
-	priority_queue<ll> x;
+	priority_queue<ll, vector<long long>, std::greater<long long> > x;
 	// vector<ll> v;
-	vector<string> message;
+	vector<string> message(5000000);
+	int z=0;
 	
 	// v.push_back(10); push_heap(v.begin(), v.end(), fun);
 	// v.push_back(20); push_heap(v.begin(), v.end(), fun);
@@ -34,36 +35,36 @@ int main(int argc, char const *argv[])
 
 		if(cmd.compare("insert")==0){
 			cin >> val;
-			x.push(-val);
-			message.push_back("insert "+to_string(val));
+			x.push(val);
+			message[z++] = ("insert "+to_string(val));
 		}else if(cmd.compare("getMin")==0){
 			cin >> val;
 			bool flag = false;
 			while(!flag){
 				if(x.empty()){
-					message.push_back("insert "+to_string(val));
-					x.push(-val);
+					message[z++] = ("insert "+to_string(val));
+					x.push(val);
 					flag = true;
-				}else if(-x.top() < val){
-					message.push_back("removeMin");
+				}else if(x.top() < val){
+					message[z++] = ("removeMin");
 					x.pop();
 				}else flag = true;
 			}
-			if(-x.top() != val){
-				message.push_back("insert "+to_string(val));
-				x.push(-val);
+			if(x.top() != val){
+				message[z++] = ("insert "+to_string(val));
+				x.push(val);
 			}
-			message.push_back("getMin "+to_string(val));
+			message[z++] = ("getMin "+to_string(val));
 		}else{
 			if(x.empty()){
 				x.push(0);
-				message.push_back("insert 0");
+				message[z++] = ("insert 0");
 			}
-			message.push_back("removeMin");
+			message[z++] = ("removeMin");
 			x.pop();
 		}
 	}
-	cout << message.size() << "\n";
-	for(ll i=0; i<message.size(); ++i) cout << message[i] << endl;
+	cout << z << "\n";
+	for(ll i=0; i<z; ++i) cout << message[i] << endl;
 	return 0;
 }

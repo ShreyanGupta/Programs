@@ -169,7 +169,13 @@ LinkedList merge_list(LinkedList &l1, LinkedList &l2){
 }
 
 LinkedList merge_sort(LinkedList l){
-	if(l.size()==0 || l.size()==1) return l;
+	// if(l.size()==0 || l.size()==1) return l;
+	if(l.size()<=1) return LinkedList();
+	if(l.size()==1){
+		LinkedList temp;
+		temp.insert(l.element_at_pos(0));
+		return temp;
+	}
 	LinkedList l1, l2;
 	int mid = l.size()/2;
 	cout << "mid = " << mid << endl;
@@ -178,11 +184,12 @@ LinkedList merge_sort(LinkedList l){
 		else l2.insert(l.element_at_pos(i));
 	}
 	LinkedList l1_sort = merge_sort(l1);
-	cout << "l1 sorted size " << l1_sort.size() << endl;
+	// cout << "l1 sorted size " << l1_sort.size() << endl;
 	LinkedList l2_sort = merge_sort(l2);
-	cout << "l2 sorted size " << l2_sort.size() << endl;
+	// cout << "l2 sorted size " << l2_sort.size() << endl;
+	// return l;
 	LinkedList merged = merge_list(l1_sort, l2_sort);
-	cout << "merged size " << merged.size() << endl;
+	// cout << "merged size " << merged.size() << endl;
 	return merged;
 }
 
